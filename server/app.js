@@ -37,7 +37,7 @@ app.use(session({
   key: 'sessionid',  // the name of the cookie so that it can be tracked when requests are made
   secret: 'Domo Arigato',  // string used as a seed for hashing/creating unique session keys
   resave: true,  // refresh the key to keep it active
-  saveUninitialized: true  // make sessions even when not loggin in
+  saveUninitialized: true,  // make sessions even when not loggin in
 }));
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

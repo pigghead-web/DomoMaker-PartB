@@ -15,38 +15,38 @@ const DomoSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    set: setName
+    set: setName,
   },
-  
+
   age: {
     type: Number,
     min: 0,
     required: true,
   },
-  
+
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
     ref: 'Account',
   },
-  
+
   createdData: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // - STATIC FUNCTIONS / METHODS -
 DomoSchema.statics.toAPI = (doc) => ({
   name: doc.name,
-  age: age.name
+  age: doc.age,
 });
 
 DomoSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     owner: convertId(ownerId),
   };
-  
+
   return DomoModel.find(search).select('name age').exec(callback);
 };
 

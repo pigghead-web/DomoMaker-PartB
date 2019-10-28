@@ -40,10 +40,10 @@ const login = (req, res) => {
     if (err || !account) {
       return response.status(401).json({ error: 'WRONG USERNAME OR PASSWORD' });
     }
-    
+
     // Add a new variable (called account) to our req.session
     // * When a user logs in, we attach all fields from .toAPI to their session for tracking
-    req.session.account = Account.AccountModel.toAPI(account);
+    request.session.account = Account.AccountModel.toAPI(account);
 
     return response.json({ redirect: '/maker' });
   });
@@ -88,7 +88,7 @@ const signup = (req, res) => {
     savePromise.then(() => {
       // Create a new account variable on our req.session and attach all variables from .toAPI
       request.session.account = Account.AccountModel.toAPI(newAccount);
-      return res.json({ redirect: '/maker' })
+      return res.json({ redirect: '/maker' });
     });
 
     savePromise.catch((err) => {
